@@ -1,0 +1,25 @@
+from django.core.management.base import BaseCommand
+import telebot
+from shop.models import Figure
+
+bot = telebot.TeleBot("6879858805:AAE6sbNonC6Kk57Y3woVvqnCanVIDWqgELA") # Вставьте сюда свой токен
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(message.chat.id, "Hello world!")
+
+@bot.message_handler(commands=['figures'])
+def figures(message):
+    figures = Figure.objects.all()
+    for figure in figures:
+        bot.send_message(message.chat.id, f"{figure.shape} {figure.color}")
+
+
+
+class Command(BaseCommand):
+    def handle(self, *args, **options):
+        print("Starting bot...")
+        bot.polling()
+        print("Bot stopped")
+
+
