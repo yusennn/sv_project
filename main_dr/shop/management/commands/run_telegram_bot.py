@@ -3,17 +3,21 @@ import telebot
 from telebot import types
 from shop.models import Figure
 
-bot = telebot.TeleBot("6879858805:AAE6sbNonC6Kk57Y3woVvqnCanVIDWqgELA") # Вставьте сюда свой токен
+
+bot = telebot.TeleBot("6879858805:AAE6sbNonC6Kk57Y3woVvqnCanVIDWqgELA")  # Вставьте сюда свой токен
+
 
 @bot.message_handler(commands=['start'])
 def start(message):
     bot.send_message(message.chat.id, "Hello world!")
+
 
 @bot.message_handler(commands=['figures'])
 def figures(message):
     figures = Figure.objects.all()
     for figure in figures:
         bot.send_message(message.chat.id, f"{figure.shape} {figure.color}")
+
 
 response = (
     "Commands:\n"
@@ -23,9 +27,11 @@ response = (
     "/add <shape> <color>: add another figure"
 )
 
+
 @bot.message_handler(commands=['help'])
 def handle_help(message):
     bot.reply_to(message, response)
+
 
 @bot.message_handler(commands=['add'])
 def handle_add_figure(message):
@@ -37,9 +43,11 @@ def handle_add_figure(message):
     else:
         bot.send_message(message.chat.id, "Используйте /add <shape> <color>")
 
+
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
     bot.reply_to(message, message.text)
+
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
