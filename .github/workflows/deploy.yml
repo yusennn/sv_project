@@ -18,7 +18,7 @@ jobs:
           host: 34.116.67.50
           username: ${{ secrets.kimd_22848 }}
           password: ${{ secrets.super22848 }}
-          port: 8080
+          port: 22
           script: |
             cd main_dr
             source /home/kimd_22848/venv/bin/activate
