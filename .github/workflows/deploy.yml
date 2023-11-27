@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: executing remote ssh commands using password
-        uses: yusennn/sv_project@main
+        uses: appleboy/ssh-action@master
         with:
           host: 34.116.67.50
           username: ${{ secrets.kimd_22848 }}
