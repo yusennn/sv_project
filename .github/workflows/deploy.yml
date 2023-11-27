@@ -22,8 +22,8 @@ jobs:
           pip install -r requirements.txt
       - name: Run Tests
         run: |
-          ls
           dir
+          cd main_dr
           python manage.py test
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
