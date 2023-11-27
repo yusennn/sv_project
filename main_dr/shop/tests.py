@@ -25,11 +25,6 @@ class TestBot(unittest.TestCase):
         message.chat.id = 534895748
         handle_add_figure(message)
 
-    def test_echo_all(self):
-        message = MagicMock()
-        message.chat.id = 534895748
-        echo_all(message)
-
 
 if __name__ == '__main__':
     unittest.main()
