@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 import telebot
 from telebot import types
-from shop.models import Figure
+from import Figure
 
 
 bot = telebot.TeleBot("6879858805:AAE6sbNonC6Kk57Y3woVvqnCanVIDWqgELA")  # Вставьте сюда свой токен
